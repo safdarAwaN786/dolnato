@@ -20,23 +20,8 @@ import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
-const items = [
-  {
-    key: "1",
-    type: "group",
-    label: "Group title",
-    children: [
-      {
-        key: "1-1",
-        label: "1st menu item",
-      },
-      {
-        key: "1-2",
-        label: "2nd menu item",
-      },
-    ],
-  },
-];
+import { useNavigate } from "react-router-dom";
+
 
 export default function Directors() {
   const [openModal, setOpenModal] = useState(false);
@@ -62,6 +47,73 @@ export default function Directors() {
       setFileList3(newFileList);
     }
   };
+  const navigate = useNavigate()
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a  onClick={()=> navigate('/senior')} >
+          Senior
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a onClick={()=> navigate('/designers')}>
+          Designers
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a onClick={()=> navigate('/planning')}>
+          Planning
+        </a>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <a onClick={()=> navigate('/purchase')}>
+          Purchase
+        </a>
+      ),
+    },
+    {
+      key: "5",
+      label: (
+        <a onClick={()=> navigate('/factory')}>
+          Factory
+        </a>
+      ),
+    },
+    {
+      key: "6",
+      label: (
+        <a onClick={()=> navigate('/project')}>
+          Project
+        </a>
+      ),
+    },
+    {
+      key: "7",
+      label: (
+        <a onClick={()=> navigate('/directors')}>
+          Directors
+        </a>
+      ),
+    },
+    {
+      key: "8",
+      label: (
+        <a onClick={()=> navigate('/dashboard')}>
+          Dashboard
+        </a>
+      ),
+    },
+  ];
 
   const beforeUpload = async (file) => {
     const isAllowed = allowedExtensions.some((ext) =>

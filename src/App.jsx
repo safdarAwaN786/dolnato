@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Overview from "./pages/Overview";
-import Dashboard from "./pages/Dashboard";
 import Classification from "./pages/Classification";
 import Graphic from "./pages/3DGraphic";
 import LoadManagement from "./pages/LoadManagement";
@@ -31,7 +30,8 @@ function App() {
         <Sidebar />
         <Routes>
           {/* <Route path="/" element={<Login />} /> */}
-          <Route path="/" element={<Overview />} />
+          <Route path="/" element={<Registration/>} />
+          <Route path="/dashboard" element={<Overview />} />
           <Route path="/purchase" element={<Purchase />} />
           <Route path="/factory" element={<Factory />} />
           <Route path="/directors" element={<Directors />} />
@@ -45,7 +45,6 @@ function App() {
           <Route path="/add-team" element={<AddTeam />} />
           <Route path="/add-project" element={<AddProject />} />
           <Route path="/clients" element={<Clients />} />
-          <Route path="/registration" element={<Registration />} />
           <Route path="/employee-id" element={<EmployeeID />} />
           <Route path="/mail-code" element={<MailCode />} />
         </Routes>

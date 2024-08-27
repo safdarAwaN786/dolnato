@@ -21,6 +21,7 @@ import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { IoIosWarning } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -94,7 +95,7 @@ export default function Senior() {
       </div>
     </div>
   );
-
+  const navigate = useNavigate()
   return (
     <>
       <div className="sm:ms-[18%] sm:w-[82%] mt-14 w-full overflow-x-scroll p-10 bg-[#fff] ">
@@ -144,7 +145,7 @@ export default function Senior() {
             <div className=" w-[40%] flex flex-row gap-4 justify-end">
               <div className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
                 <button
-                  // onClick={() => setViewItem(true)}
+                  onClick={() => navigate('/designers')}
                   className=" w-[210px] justify-center items-center p-2  px-5 h-[38px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
                 >
                   <span className=" text-sm">Generate Team Report</span>

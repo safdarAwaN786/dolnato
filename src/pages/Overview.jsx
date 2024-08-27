@@ -14,6 +14,7 @@ import { Progress, Upload } from "antd";
 import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -71,7 +72,7 @@ export default function Overview() {
     setFileAllowed(true);
     return true; // Proceed with the upload
   };
-
+  const navigate = useNavigate()
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -328,10 +329,10 @@ export default function Overview() {
               </p>
             </div>
             <div className=" w-full flex flex-row gap-3 items-center my-5">
-              <button className=" w-[150px] items-center p-3 h-full font-medium bg-[#306BFF] rounded-lg text-white flex flex-row gap-2 ">
+              <button onClick={()=> navigate("/sales")} className=" w-[150px] items-center p-3 h-full font-medium bg-[#306BFF] rounded-lg text-white flex flex-row gap-2 ">
                 Sales Team <GoArrowRight />
               </button>
-              <button className=" w-[170px] items-center font-medium p-3 h-full border border-[#000] bg-white rounded-lg text-[#000] flex flex-row gap-2 ">
+              <button onClick={()=> navigate('/teams')} className=" w-[170px] items-center font-medium p-3 h-full border border-[#000] bg-white rounded-lg text-[#000] flex flex-row gap-2 ">
                 Design Team <GoArrowRight />
               </button>
             </div>

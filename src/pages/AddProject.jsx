@@ -21,6 +21,7 @@ import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { IoIosWarning } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -94,6 +95,7 @@ export default function AddProject() {
       </div>
     </div>
   );
+  const navigate = useNavigate();
 
   return (
     <>
@@ -181,7 +183,10 @@ export default function AddProject() {
               </div>
             </Dropdown>
           </div>
-          <button className=" w-full text-lg font-semibold p-4 text-center text-white rounded-lg bg-gradient-to-r from-[#053BD3] to-[#03EAEA] mt-5">
+          <button
+            onClick={() => navigate("/dashboard")}
+            className=" w-full text-lg font-semibold p-4 text-center text-white rounded-lg bg-gradient-to-r from-[#053BD3] to-[#03EAEA] mt-5"
+          >
             Add Project
           </button>
         </div>

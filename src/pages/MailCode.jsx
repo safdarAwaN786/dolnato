@@ -21,6 +21,7 @@ import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { IoIosWarning } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -81,7 +82,7 @@ export default function MailCode() {
     return true; // Proceed with the upload
   };
   const [showAdd, setShowAdd] = useState(false);
-
+  const navigate = useNavigate();
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -173,7 +174,7 @@ export default function MailCode() {
             00:24
           </div>
           <h1 className=" text-2xl font-bold text-center mt-8 mb-4">Resend OTP</h1>
-          <button className=" w-full text-lg font-semibold p-4 text-center text-white rounded-lg bg-gradient-to-r from-[#053BD3] to-[#03EAEA] mt-5">
+          <button onClick={()=> navigate('/employee-id')} className=" w-full text-lg font-semibold p-4 text-center text-white rounded-lg bg-gradient-to-r from-[#053BD3] to-[#03EAEA] mt-5">
             Verify
           </button>
         </div>

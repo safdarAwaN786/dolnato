@@ -21,6 +21,7 @@ import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { IoIosWarning } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -94,7 +95,7 @@ export default function Sales() {
       </div>
     </div>
   );
-
+  const navigate = useNavigate();
   return (
     <>
       <div className="sm:ms-[18%] sm:w-[82%] mt-14 w-full overflow-x-scroll p-10 bg-[#fff] ">
@@ -246,7 +247,10 @@ export default function Sales() {
               teams.
             </p>
 
-            <button className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] w-[150px]  items-center justify-center p-2  px-5 h-[40px] flex  font-medium rounded-lg text-white  flex-row gap-1 ">
+            <button
+              onClick={() => navigate("/sales-team-table")}
+              className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] w-[150px]  items-center justify-center p-2  px-5 h-[40px] flex  font-medium rounded-lg text-white  flex-row gap-1 "
+            >
               <span className=" text-sm">Submit</span>
             </button>
           </div>
