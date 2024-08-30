@@ -17,6 +17,7 @@
     "@fullcalendar/timegrid": "^6.1.15",
     "@react-three/drei": "^9.111.2",
     "@react-three/fiber": "^8.17.5",
+    "animate.css": "^4.1.1",
     "antd": "^5.20.2",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.4",

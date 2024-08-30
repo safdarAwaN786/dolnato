@@ -1,41 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 
 import { useState } from "react";
-import { RxCross2 } from "react-icons/rx";
-import ModalOneChart from "../components/widgets/overview/modals/ModalOneChart.jsx";
-import ModalTwoChart from "../components/widgets/overview/modals/ModalTwoChart.jsx";
-import ModalThreeChart from "../components/widgets/overview/modals/ModalThreeChart.jsx";
-import ModalFourChart from "../components/widgets/overview/modals/ModalFourChart.jsx";
-import ModalFiveChart from "../components/widgets/overview/modals/ModalFiveChart.jsx";
-import ModalSixChart from "../components/widgets/overview/modals/ModalSixChart.jsx";
 import { FiCheckCircle } from "react-icons/fi";
-import { FaAngleDown, FaSortDown } from "react-icons/fa";
-import { Progress, Upload } from "antd";
-import { GoArrowRight } from "react-icons/go";
-import { Dropdown } from "antd";
+import { Upload } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { Checkbox } from "antd";
-const items = [
-  {
-    key: "1",
-    type: "group",
-    label: "Group title",
-    children: [
-      {
-        key: "1-1",
-        label: "1st menu item",
-      },
-      {
-        key: "1-2",
-        label: "2nd menu item",
-      },
-    ],
-  },
-];
+
 
 export default function Project() {
-  const [openModal, setOpenModal] = useState(false);
-  const [modal, setModal] = useState(0);
 
   const allowedExtensions = [".jpg", ".jpeg", ".png"];
   const [isFileAllowed, setFileAllowed] = useState(false);
@@ -87,11 +58,11 @@ export default function Project() {
 
   return (
     <>
-      <div className="sm:ms-[18%] sm:w-[82%] bg-[#F4F6F8] w-full  ">
-        <div className="w-full flex px-10 pb-1 pt-4  bg-white flex-col">
-          <h1 className=" text-4xl font-medium mb-0 f">Glenmark</h1>
-          <div className=" flex flex-row gap-2 w-full mt-8 items-end p-3 justify-start">
-            <div className=" w-[20%]">
+      <div className="lg:ms-[18%] lg:w-[82%] bg-[#F4F6F8] w-full  ">
+        <div className="w-full flex md:px-10 px-2  pb-1 pt-4  bg-white flex-col">
+          <h1 className=" ms:text-4xl text-2xl font-medium mb-0 lg:ms-0 ms-10">Glenmark</h1>
+          <div className=" flex flex-row gap-2 md:flex-nowrap flex-wrap w-full mt-8 items-end p-3 justify-start">
+            <div className=" w-[200px]">
               <h3 className="font-medium mt-1">Initial PO</h3>
               <div className="  w-full rounded-lg p-1">
                 <Upload
@@ -107,7 +78,7 @@ export default function Project() {
                 </Upload>
               </div>
             </div>
-            <div className=" w-[20%]">
+            <div className=" w-[200px]">
               <h3 className="font-medium mt-1">Service PO</h3>
               <div className="  w-full rounded-lg p-1">
                 <Upload
@@ -123,7 +94,7 @@ export default function Project() {
                 </Upload>
               </div>
             </div>
-            <div className=" w-[20%]">
+            <div className=" w-[200px]">
               <h3 className="font-medium mt-1">Conceptual Layout</h3>
               <div className="  w-full rounded-lg p-1">
                 <Upload
@@ -142,7 +113,7 @@ export default function Project() {
           </div>
         </div>
 
-        <div className=" p-10 w-full  min-h-[73vh] overflow-x-scroll">
+        <div className=" md:p-10 py-10 px-2 w-full  min-h-[73vh] overflow-x-scroll">
           <div className=" min-h-[70vh] px-6 py-4 min-w-[1500px]  bg-[#FFFFFF]  border border-[rgba(0, 0, 0, 0.10)] rounded-2xl">
             <div className=" bg-white border border-[rgba(0, 0, 0, 0.10)] rounded-lg mt-5  p-4  flex flex-col gap-12 w-full ">
               <div className="w-full  flex flex-row gap-3 items-start justify-start">
@@ -326,54 +297,7 @@ export default function Project() {
         </div>
       </div>
 
-      {openModal && (
-        <div className="w-full h-[100vh] z-10 overflow-y-scroll fixed top-0 start-0 bg-[#4fcd8a76] flex justify-center items-center">
-          <div className=" w-[700px] h-[550px] rounded bg-white text-center p-3">
-            <div className=" flex justify-end">
-              <RxCross2
-                className="text-black text-xl cursor-pointer"
-                onClick={() => setOpenModal(false)}
-              />
-            </div>
-            {modal === 1 && (
-              <>
-                <h1> Energy Usage Vs Target (kWh/Month)</h1>
-                <ModalOneChart />
-              </>
-            )}
-            {modal === 2 && (
-              <>
-                <h1>Energy Generated (kWh/Month)</h1>
-                <ModalTwoChart />
-              </>
-            )}
-            {modal === 3 && (
-              <>
-                <h1>Energy Balance (kWh/Month)</h1>
-                <ModalThreeChart />
-              </>
-            )}
-            {modal === 4 && (
-              <>
-                <h1>Year to Date Consumption (kWh)</h1>
-                <ModalFourChart />
-              </>
-            )}
-            {modal === 5 && (
-              <>
-                <h1>Demand Budget (kWh/Month)</h1>
-                <ModalFiveChart />
-              </>
-            )}
-            {modal === 6 && (
-              <>
-                <h1>Actual Demand (kWh/Month)</h1>
-                <ModalSixChart />
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      
     </>
   );
 }

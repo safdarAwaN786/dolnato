@@ -1,32 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 
 import { useState } from "react";
-import { RxCross2 } from "react-icons/rx";
-import ModalOneChart from "../components/widgets/overview/modals/ModalOneChart.jsx";
-import ModalTwoChart from "../components/widgets/overview/modals/ModalTwoChart.jsx";
-import ModalThreeChart from "../components/widgets/overview/modals/ModalThreeChart.jsx";
-import ModalFourChart from "../components/widgets/overview/modals/ModalFourChart.jsx";
-import ModalFiveChart from "../components/widgets/overview/modals/ModalFiveChart.jsx";
-import ModalSixChart from "../components/widgets/overview/modals/ModalSixChart.jsx";
 import { FiCheckCircle } from "react-icons/fi";
-import {
-  FaAngleDown,
-  FaCaretDown,
-  FaCaretLeft,
-  FaSortDown,
-} from "react-icons/fa";
-import { Progress, Upload } from "antd";
-import { GoArrowRight } from "react-icons/go";
-import { Dropdown } from "antd";
+import { FaCaretDown, FaCaretLeft } from "react-icons/fa";
+import { Dropdown, Upload } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Directors() {
-  const [openModal, setOpenModal] = useState(false);
-  const [modal, setModal] = useState(0);
-
   const allowedExtensions = [".jpg", ".jpeg", ".png"];
   const [isFileAllowed, setFileAllowed] = useState(false);
   const [fileList, setFileList] = useState([]);
@@ -47,71 +29,39 @@ export default function Directors() {
       setFileList3(newFileList);
     }
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const items = [
     {
       key: "1",
-      label: (
-        <a  onClick={()=> navigate('/senior')} >
-          Senior
-        </a>
-      ),
+      label: <a onClick={() => navigate("/senior")}>Senior</a>,
     },
     {
       key: "2",
-      label: (
-        <a onClick={()=> navigate('/designers')}>
-          Designers
-        </a>
-      ),
+      label: <a onClick={() => navigate("/designers")}>Designers</a>,
     },
     {
       key: "3",
-      label: (
-        <a onClick={()=> navigate('/planning')}>
-          Planning
-        </a>
-      ),
+      label: <a onClick={() => navigate("/planning")}>Planning</a>,
     },
     {
       key: "4",
-      label: (
-        <a onClick={()=> navigate('/purchase')}>
-          Purchase
-        </a>
-      ),
+      label: <a onClick={() => navigate("/purchase")}>Purchase</a>,
     },
     {
       key: "5",
-      label: (
-        <a onClick={()=> navigate('/factory')}>
-          Factory
-        </a>
-      ),
+      label: <a onClick={() => navigate("/factory")}>Factory</a>,
     },
     {
       key: "6",
-      label: (
-        <a onClick={()=> navigate('/project')}>
-          Project
-        </a>
-      ),
+      label: <a onClick={() => navigate("/project")}>Project</a>,
     },
     {
       key: "7",
-      label: (
-        <a onClick={()=> navigate('/directors')}>
-          Directors
-        </a>
-      ),
+      label: <a onClick={() => navigate("/directors")}>Directors</a>,
     },
     {
       key: "8",
-      label: (
-        <a onClick={()=> navigate('/dashboard')}>
-          Dashboard
-        </a>
-      ),
+      label: <a onClick={() => navigate("/dashboard")}>Dashboard</a>,
     },
   ];
 
@@ -144,11 +94,13 @@ export default function Directors() {
 
   return (
     <>
-      <div className="sm:ms-[18%] sm:w-[82%] bg-[#F4F6F8] w-full  ">
-        <div className="w-full flex px-10 pb-1 pt-4  bg-white flex-col">
-          <h1 className=" text-4xl font-medium mb-0 f">Glenmark</h1>
-          <div className=" flex flex-row gap-2 w-full mt-8 items-end p-3 justify-start">
-            <div className=" w-[16%]">
+      <div className="lg:ms-[18%] lg:w-[82%] bg-[#F4F6F8] w-full  ">
+        <div className="w-full flex md:px-10 px-2 pb-1 pt-4  bg-white flex-col">
+          <h1 className=" ms:text-4xl text-2xl font-medium mb-0 lg:ms-0 ms-10">
+            Glenmark
+          </h1>
+          <div className=" flex flex-row gap-2 2xl:flex-nowrap flex-wrap w-full mt-8 items-end p-3 justify-start">
+            <div className=" md:w-[20%] sm:w-[45%] w-full">
               <h3 className="font-medium mt-1">Initial PO</h3>
               <div className="  w-full rounded-lg p-1">
                 <Upload
@@ -164,7 +116,7 @@ export default function Directors() {
                 </Upload>
               </div>
             </div>
-            <div className=" w-[16%]">
+            <div className=" md:w-[20%] sm:w-[45%] w-full">
               <h3 className="font-medium mt-1">Service PO</h3>
               <div className="  w-full rounded-lg p-1">
                 <Upload
@@ -180,7 +132,7 @@ export default function Directors() {
                 </Upload>
               </div>
             </div>
-            <div className=" w-[16%]">
+            <div className=" md:w-[20%] sm:w-[45%] w-full">
               <h3 className="font-medium mt-1">Conceptual Layout</h3>
               <div className="  w-full rounded-lg p-1">
                 <Upload
@@ -196,6 +148,23 @@ export default function Directors() {
                 </Upload>
               </div>
             </div>
+            <div className=" md:w-[20%] sm:w-[45%] w-full pb-2">
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                trigger={["click"]}
+              >
+                <div
+                  className={`w-full items-center rounded-xl p-2 py-5 bg-[#F4F6F8] text-[#0E111E]  cursor-pointer    flex flex-row justify-center gap-3 h-[50px] font-medium text-center`}
+                >
+                  Planning team{" "}
+                  <FaCaretDown className="text-[#0E111E] text-xl" />
+                </div>
+              </Dropdown>
+            </div>
+          </div>
+          <div className=" flex w-full gap-2 sm:flex-nowrap flex-wrap flex-row justify-start">
             <button className=" items-center mb-2 p-3 h-[50px] bg-gradient-to-r rounded-xl text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -226,25 +195,10 @@ export default function Directors() {
               </svg>
               <span className=" text-sm">View Job Card</span>
             </button>
-            <div className=" pb-2 w-[16%]">
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                trigger={["click"]}
-              >
-                <div
-                  className={`w-full items-center rounded-xl p-2 py-5 bg-[#F4F6F8] text-[#0E111E]  cursor-pointer text-lg    flex flex-row justify-center gap-3 h-[50px] font-medium text-center`}
-                >
-                  Planning team{" "}
-                  <FaCaretDown  className="text-[#0E111E] text-xl" />
-                </div>
-              </Dropdown>
-            </div>
           </div>
         </div>
 
-        <div className=" p-10 w-full min-h-[73vh] overflow-x-scroll">
+        <div className=" md:p-10 px-2 py-10 w-full min-h-[73vh] overflow-x-scroll">
           <div className="min-w-[2000px] flex flex-row  items-center justify-start">
             <div className="w-[100px] text-lg font-medium text-end me-2">
               Wall Panel Layout
@@ -328,7 +282,6 @@ export default function Directors() {
                   {fileList2.length >= 1 ? null : uploadButton}
                 </Upload>
                 <div className="flex flex-row text-[#00900D] justify-end items-center gap-1 mt-2">
-                  
                   <p className=" text-[#828282] text-xs">on Nov 16, 2023</p>
                 </div>
                 <div className="w-full py-3 mt-5 bg-[#F4F6F8] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
@@ -355,7 +308,6 @@ export default function Directors() {
                   {fileList2.length >= 1 ? null : uploadButton}
                 </Upload>
                 <div className="flex flex-row text-[#00900D] justify-end items-center gap-1 mt-2">
-                  
                   <p className=" text-[#828282] text-xs">on Nov 16, 2023</p>
                 </div>
                 <div className="w-full py-3 mt-5 bg-[#F4F6F8] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
@@ -382,7 +334,6 @@ export default function Directors() {
                   {fileList2.length >= 1 ? null : uploadButton}
                 </Upload>
                 <div className="flex flex-row text-[#00900D] justify-end items-center gap-1 mt-2">
-                  
                   <p className=" text-[#828282] text-xs">on Nov 16, 2023</p>
                 </div>
                 <div className="w-full py-3 mt-5 bg-[#F4F6F8] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
@@ -409,7 +360,6 @@ export default function Directors() {
                   {fileList2.length >= 1 ? null : uploadButton}
                 </Upload>
                 <div className="flex flex-row text-[#00900D] justify-end items-center gap-1 mt-2">
-                  
                   <p className=" text-[#828282] text-xs">on Nov 16, 2023</p>
                 </div>
                 <div className="w-full py-3 mt-5 bg-[#F4F6F8] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
@@ -436,7 +386,6 @@ export default function Directors() {
                   {fileList2.length >= 1 ? null : uploadButton}
                 </Upload>
                 <div className="flex flex-row text-[#00900D] justify-end items-center gap-1 mt-2">
-                  
                   <p className=" text-[#828282] text-xs">on Nov 16, 2023</p>
                 </div>
                 <div className="w-full py-3 mt-5 bg-[#F4F6F8] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
@@ -626,55 +575,6 @@ export default function Directors() {
           </div>
         </div>
       </div>
-
-      {openModal && (
-        <div className="w-full h-[100vh] z-10 overflow-y-scroll fixed top-0 start-0 bg-[#4fcd8a76] flex justify-center items-center">
-          <div className=" w-[700px] h-[550px] rounded bg-white text-center p-3">
-            <div className=" flex justify-end">
-              <RxCross2
-                className="text-black text-xl cursor-pointer"
-                onClick={() => setOpenModal(false)}
-              />
-            </div>
-            {modal === 1 && (
-              <>
-                <h1> Energy Usage Vs Target (kWh/Month)</h1>
-                <ModalOneChart />
-              </>
-            )}
-            {modal === 2 && (
-              <>
-                <h1>Energy Generated (kWh/Month)</h1>
-                <ModalTwoChart />
-              </>
-            )}
-            {modal === 3 && (
-              <>
-                <h1>Energy Balance (kWh/Month)</h1>
-                <ModalThreeChart />
-              </>
-            )}
-            {modal === 4 && (
-              <>
-                <h1>Year to Date Consumption (kWh)</h1>
-                <ModalFourChart />
-              </>
-            )}
-            {modal === 5 && (
-              <>
-                <h1>Demand Budget (kWh/Month)</h1>
-                <ModalFiveChart />
-              </>
-            )}
-            {modal === 6 && (
-              <>
-                <h1>Actual Demand (kWh/Month)</h1>
-                <ModalSixChart />
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </>
   );
 }

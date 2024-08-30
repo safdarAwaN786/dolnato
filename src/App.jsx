@@ -1,10 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Overview from "./pages/Overview";
-import Classification from "./pages/Classification";
-import Graphic from "./pages/3DGraphic";
-import LoadManagement from "./pages/LoadManagement";
-import Scheduler from "./pages/Scheduler";
 import Sidebar from "./components/Sidebar";
 import Purchase from "./pages/Purchase";
 import Factory from "./pages/Factory";
@@ -22,6 +17,7 @@ import Clients from "./pages/Clients";
 import Registration from "./pages/Registration";
 import EmployeeID from "./pages/EmployeeID";
 import MailCode from "./pages/MailCode";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -31,7 +27,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Login />} /> */}
           <Route path="/" element={<Registration/>} />
-          <Route path="/dashboard" element={<Overview />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/purchase" element={<Purchase />} />
           <Route path="/factory" element={<Factory />} />
           <Route path="/directors" element={<Directors />} />

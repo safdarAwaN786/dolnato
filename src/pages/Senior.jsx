@@ -2,50 +2,16 @@
 
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import ModalOneChart from "../components/widgets/overview/modals/ModalOneChart.jsx";
-import ModalTwoChart from "../components/widgets/overview/modals/ModalTwoChart.jsx";
-import ModalThreeChart from "../components/widgets/overview/modals/ModalThreeChart.jsx";
-import ModalFourChart from "../components/widgets/overview/modals/ModalFourChart.jsx";
-import ModalFiveChart from "../components/widgets/overview/modals/ModalFiveChart.jsx";
-import ModalSixChart from "../components/widgets/overview/modals/ModalSixChart.jsx";
 import { AiOutlinePlus } from "react-icons/ai";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import {
-  FaCaretDown,
-  FaCaretLeft,
-  FaCaretRight,
-  FaSortDown,
-} from "react-icons/fa";
+import { FaCaretRight } from "react-icons/fa";
 import { Checkbox, Progress, Upload } from "antd";
-import { GoArrowRight } from "react-icons/go";
-import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { IoIosWarning } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
-const items = [
-  {
-    key: "1",
-    type: "group",
-    label: "Group title",
-    children: [
-      {
-        key: "1-1",
-        label: "1st menu item",
-      },
-      {
-        key: "1-2",
-        label: "2nd menu item",
-      },
-    ],
-  },
-];
 
 export default function Senior() {
   const [openModal, setOpenModal] = useState(false);
-  const [modal, setModal] = useState(0);
   const [singleComment, setSingleComment] = useState(false);
-  const [selectBOQ, setSelectBOQ] = useState(false);
   const allowedExtensions = [".jpg", ".jpeg", ".png"];
   const [isFileAllowed, setFileAllowed] = useState(false);
   const [fileList, setFileList] = useState([]);
@@ -66,8 +32,6 @@ export default function Senior() {
       setFileList3(newFileList);
     }
   };
-  const [showSummary, setShowSummary] = useState(false);
-  const [viewItem, setViewItem] = useState(false);
   const beforeUpload = async (file) => {
     const isAllowed = allowedExtensions.some((ext) =>
       file.name.toLowerCase().endsWith(ext)
@@ -81,7 +45,6 @@ export default function Senior() {
     setFileAllowed(true);
     return true; // Proceed with the upload
   };
-  const [showAdd, setShowAdd] = useState(false);
 
   const uploadButton = (
     <div>
@@ -95,71 +58,70 @@ export default function Senior() {
       </div>
     </div>
   );
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
-      <div className="sm:ms-[18%] sm:w-[82%] mt-14 w-full overflow-x-scroll p-10 bg-[#fff] ">
-        <div className="min-w-[1000px]">
-          <div className="w-full flex flex-row items-center border p-3 rounded-xl border-[rgba(0, 0, 0, 0.10)] justify-between">
-            <div className=" w-[60%] flex flex-row gap-4 ">
-              <div className="flex flex-col h-full justify-center">
-                <h2 className=" opacity-[0.6] text-xl font-medium mt-3">May</h2>
-                <p className=" opacity-[0.5] text-sm">
-                  Today is Saturday, Jul 9th, 2023
-                </p>
-              </div>
-              <vr className="border border-[#000000] opacity-[0.2]" />
-              <div className=" w-[200px]">
-                <h3 className="font-medium ">Initial PO</h3>
-                <div className="  w-full rounded-lg p-1">
-                  <Upload
-                    listType="picture-card"
-                    beforeUpload={beforeUpload}
-                    fileList={fileList}
-                    onChange={handleChange}
-                    style={{
-                      backgroundColor: "#F4F6F8",
-                    }}
-                  >
-                    {fileList.length >= 1 ? null : uploadButton}
-                  </Upload>
-                </div>
-              </div>
-              <div className=" w-[200px]">
-                <h3 className="font-medium">Service PO</h3>
-                <div className="  w-full rounded-lg p-1">
-                  <Upload
-                    listType="picture-card"
-                    beforeUpload={beforeUpload}
-                    fileList={fileList}
-                    onChange={handleChange}
-                    style={{
-                      backgroundColor: "#F4F6F8",
-                    }}
-                  >
-                    {fileList.length >= 1 ? null : uploadButton}
-                  </Upload>
-                </div>
+      <div className="lg:ms-[18%] lg:w-[82%] mt-14 w-full  md:p-10 py-10 px-2 bg-[#fff] ">
+        <div className="w-full  flex flex-row xl:flex-nowrap flex-wrap items-center border gap-4 p-3 rounded-xl border-[rgba(0, 0, 0, 0.10)] justify-between">
+          <div className=" xl:w-[60%] w-full flex flex-row md:flex-nowrap flex-wrap gap-4 ">
+            <div className="flex flex-col h-full justify-center">
+              <h2 className=" opacity-[0.6] text-xl font-medium mt-3">May</h2>
+              <p className=" opacity-[0.5] text-sm">
+                Today is Saturday, Jul 9th, 2023
+              </p>
+            </div>
+            <vr className="border border-[#000000] opacity-[0.2]" />
+            <div className=" w-[200px]">
+              <h3 className="font-medium ">Initial PO</h3>
+              <div className="  w-full rounded-lg p-1">
+                <Upload
+                  listType="picture-card"
+                  beforeUpload={beforeUpload}
+                  fileList={fileList}
+                  onChange={handleChange}
+                  style={{
+                    backgroundColor: "#F4F6F8",
+                  }}
+                >
+                  {fileList.length >= 1 ? null : uploadButton}
+                </Upload>
               </div>
             </div>
-            <div className=" w-[40%] flex flex-row gap-4 justify-end">
-              <div className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
-                <button
-                  onClick={() => navigate('/designers')}
-                  className=" w-[210px] justify-center items-center p-2  px-5 h-[38px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
+            <div className=" w-[200px]">
+              <h3 className="font-medium">Service PO</h3>
+              <div className="  w-full rounded-lg p-1">
+                <Upload
+                  listType="picture-card"
+                  beforeUpload={beforeUpload}
+                  fileList={fileList}
+                  onChange={handleChange}
+                  style={{
+                    backgroundColor: "#F4F6F8",
+                  }}
                 >
-                  <span className=" text-sm">Generate Team Report</span>
-                </button>
-              </div>
-              <div className="  justify-center bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
-                <button className=" w-[200px] items-center justify-center p-2  px-5 h-[38px] flex  font-medium rounded-lg text-white  flex-row gap-1 ">
-                  <AiOutlinePlus className="text-white text-lg" />
-                  <span className=" text-sm">Add Submittals</span>
-                </button>
+                  {fileList.length >= 1 ? null : uploadButton}
+                </Upload>
               </div>
             </div>
           </div>
-          <div className=" flex w-full  justify-end my-2">
+          <div className=" xl:w-[40%] w-full flex flex-row flex-wrap gap-4 md:justify-end justify-start">
+            <div className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
+              <button
+                onClick={() => navigate("/designers")}
+                className=" w-[210px] justify-center items-center p-2  px-5 h-[38px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
+              >
+                <span className=" text-sm">Generate Team Report</span>
+              </button>
+            </div>
+            <div className="  justify-center bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
+              <button className=" w-[200px] items-center justify-center p-2  px-5 h-[38px] flex  font-medium rounded-lg text-white  flex-row gap-1 ">
+                <AiOutlinePlus className="text-white text-lg" />
+                <span className=" text-sm">Add Submittals</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* <div className=" flex w-full  justify-end my-2">
             <div className="w-[400px] ">
               <Progress
                 percent={45}
@@ -171,225 +133,238 @@ export default function Senior() {
                 }}
               />
             </div>
-          </div>
-          <div className="w-full flex flex-row min-h-[1000px] gap-5">
-            <div className="min-h-[1000px] w-[335px] flex flex-col p-2 gap-3 bg-white border rounded-xl border-[rgba(0, 0, 0, 0.20)]">
-              <div className="flex w-full flex-row justify-between items-center p-1 opacity-[0.7]">
-                <h3 className=" opacity-[0.3] font-medium text-lg text-black">
-                  Name of Product
-                </h3>
-                <HiOutlineDotsVertical className=" cursor-pointer" />
-              </div>
-              <hr className="border border-[#000] opacity-[0.2]" />
-              <div className=" p-2 rounded-lg flex flex-col gap-2 bg-[#F7F7F7] mt-1">
-                <div className=" flex flex-row justify-between items-center w-full ">
-                  <div className=" w-[60%] text-[#505050] rounded-lg bg-white p-2 text-center">
-                    Name here
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M5.8 14H5V15H5.8C6.1 15 6.3 14.8 6.3 14.5C6.3 14.2 6.1 14 5.8 14ZM11 2H3V18H16V7L11 2ZM7.2 14.6C7.2 15.4 6.6 16 5.8 16H5V17H4V13H5.8C6.6 13 7.2 13.6 7.2 14.4V14.6ZM11.3 15.1C11.3 16.1 10.5 17 9.4 17H8V13H9.4C10.4 13 11.3 13.8 11.3 14.9V15.1ZM15 14H13V15H14.5V16H13V17H12V13H15V14ZM15 12H4V3H11V7H15V12ZM9.4 14H9V16H9.4C10 16 10.4 15.6 10.4 15C10.4 14.4 9.9 14 9.4 14Z"
-                      fill="#1D8CFB"
-                    />
-                  </svg>
-                </div>
-                <div className=" flex flex-row justify-between gap-2 items-start w-full ">
-                  <div className=" w-[70%] bg-[#D3E9FF] p-2 rounded-lg">
-                    <Upload
-                      listType="picture-card"
-                      beforeUpload={beforeUpload}
-                      fileList={fileList2}
-                      onChange={handleChange2}
-                    >
-                      {fileList2.length >= 1 ? null : uploadButton}
-                    </Upload>
-                    <p className=" text-[#828282] text-xs">On Nov 16, 2023</p>
-                  </div>
-                  <div className=" w-[30%] p-1 flex-col justify-start flex gap-2  ">
-                    <div className=" w-full p-1 py-2 rounded-lg bg-[#B4FFBB] text-[#00900D] text-xs text-center">
-                      Approve
-                    </div>
-                    <div className=" w-full p-1 py-2 rounded-lg bg-[#FFABAB] text-[#AD0000] text-xs text-center">
-                      Rework
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full text-xs py-3 mt-2 bg-white h-[40px] text-[#000] flex flex-row justify-between items-center p-2 rounded-lg">
-                  Set Target Date
-                  <span className=" opacity-[0.2]">12/05/25</span>
-                </div>
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-2 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
-                  View Comments (23)
-                  <FaCaretRight className=" text-lg" />
-                </div>
-              </div>
-              <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
-                <Checkbox onChange={() => {}}></Checkbox>
-                <p className=" text-[#505050] text-sm ">Senior Comments</p>
-                <FaCaretRight className="text-[#828282]" />
-              </div>
-              <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
-                <Checkbox onChange={() => {}}></Checkbox>
-                <p className=" text-[#505050] text-sm ">Client Comments</p>
-                <FaCaretRight className="text-[#828282]" />
-              </div>
-              <button className=" items-center w-[130px] justify-center mx-auto p-1 h-[40px] bg-gradient-to-r rounded-full text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
-                <span className=" text-sm font-medium">+ Add More</span>
-              </button>
-            </div>
-            <div className="min-h-[1000px] w-[335px] flex flex-col p-2 gap-3 bg-white border rounded-xl border-[rgba(0, 0, 0, 0.20)]">
-              <div className="flex w-full flex-row justify-between items-center p-1 opacity-[0.7]">
-                <h3 className=" font-medium text-lg text-black">
-                  Wall Panel
-                </h3>
-                <HiOutlineDotsVertical className=" cursor-pointer" />
-              </div>
-              <hr className="border border-[#000] opacity-[0.2]" />
-              <div className=" p-2 rounded-lg flex flex-col gap-2 bg-[#F7F7F7] mt-1">
-                <div className=" flex flex-row justify-between items-center w-full ">
-                  <div className=" w-[60%] text-[#505050] rounded-lg bg-white p-2 text-center">
-                    Layout
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M5.8 14H5V15H5.8C6.1 15 6.3 14.8 6.3 14.5C6.3 14.2 6.1 14 5.8 14ZM11 2H3V18H16V7L11 2ZM7.2 14.6C7.2 15.4 6.6 16 5.8 16H5V17H4V13H5.8C6.6 13 7.2 13.6 7.2 14.4V14.6ZM11.3 15.1C11.3 16.1 10.5 17 9.4 17H8V13H9.4C10.4 13 11.3 13.8 11.3 14.9V15.1ZM15 14H13V15H14.5V16H13V17H12V13H15V14ZM15 12H4V3H11V7H15V12ZM9.4 14H9V16H9.4C10 16 10.4 15.6 10.4 15C10.4 14.4 9.9 14 9.4 14Z"
-                      fill="#1D8CFB"
-                    />
-                  </svg>
-                </div>
-                <div className=" flex flex-row justify-between gap-2 items-start w-full ">
-                  <div className=" w-[70%] bg-[#D3E9FF] p-2 rounded-lg">
-                    <Upload
-                      listType="picture-card"
-                      beforeUpload={beforeUpload}
-                      fileList={fileList2}
-                      onChange={handleChange2}
-                    >
-                      {fileList2.length >= 1 ? null : uploadButton}
-                    </Upload>
-                    <p className=" text-[#828282] text-xs">On Nov 16, 2023</p>
-                  </div>
-                  <div className=" w-[30%] p-1 flex-col justify-start flex gap-2  ">
-                    <div className=" w-full p-1 py-2 rounded-lg bg-[#B4FFBB] text-[#00900D] text-xs text-center">
-                      Approve
-                    </div>
-                    <div className=" w-full p-1 py-2 rounded-lg bg-[#FFABAB] text-[#AD0000] text-xs text-center">
-                      Rework
-                    </div>
-                  </div>
-                </div>
-               
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-2 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
-                  View Comments (23)
-                  <FaCaretRight className=" text-lg" />
-                </div>
-              </div>
-              <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
-                <Checkbox onChange={() => {}}></Checkbox>
-                <p className=" text-[#505050] text-sm ">Senior Comments</p>
-                <FaCaretRight className="text-[#828282]" />
-              </div>
-              <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
-                <Checkbox onChange={() => {}}></Checkbox>
-                <p className=" text-[#505050] text-sm ">Client Comments</p>
-                <FaCaretRight className="text-[#828282]" />
-              </div>
-              <div className=" p-2 rounded-lg flex flex-col gap-2 bg-[#F7F7F7] mt-1">
-                <div className=" flex flex-row justify-between items-center w-full ">
-                  <div className=" w-[60%] text-[#505050] rounded-lg bg-white p-2 text-center">
-                    Production BOQ
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M5.8 14H5V15H5.8C6.1 15 6.3 14.8 6.3 14.5C6.3 14.2 6.1 14 5.8 14ZM11 2H3V18H16V7L11 2ZM7.2 14.6C7.2 15.4 6.6 16 5.8 16H5V17H4V13H5.8C6.6 13 7.2 13.6 7.2 14.4V14.6ZM11.3 15.1C11.3 16.1 10.5 17 9.4 17H8V13H9.4C10.4 13 11.3 13.8 11.3 14.9V15.1ZM15 14H13V15H14.5V16H13V17H12V13H15V14ZM15 12H4V3H11V7H15V12ZM9.4 14H9V16H9.4C10 16 10.4 15.6 10.4 15C10.4 14.4 9.9 14 9.4 14Z"
-                      fill="#1D8CFB"
-                    />
-                  </svg>
-                </div>
-                <div className=" flex flex-row justify-between gap-2 items-start w-full ">
-                  <div className=" w-[70%] bg-[#D3E9FF] p-2 rounded-lg">
-                    <Upload
-                      listType="picture-card"
-                      beforeUpload={beforeUpload}
-                      fileList={fileList2}
-                      onChange={handleChange2}
-                    >
-                      {fileList2.length >= 1 ? null : uploadButton}
-                    </Upload>
-                    <p className=" text-[#828282] text-xs">On Nov 16, 2023</p>
-                  </div>
-                  <div className=" w-[30%] p-1 flex-col justify-start flex gap-2  ">
-                    <div className=" w-full p-1 py-2 rounded-lg bg-[#B4FFBB] text-[#00900D] text-xs text-center">
-                      Approve
-                    </div>
-                    <div className=" w-full p-1 py-2 rounded-lg bg-[#FFABAB] text-[#AD0000] text-xs text-center">
-                      Rework
-                    </div>
-                  </div>
-                </div>
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-2 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
-                  View Comments (23)
-                  <FaCaretRight className=" text-lg" />
-                </div>
-                <div className="w-full font-medium text-xs py-3 mt-2  h-[40px] text-[#000] flex flex-row justify-end items-center p-2 rounded-lg">
-                  Target Date : 12/05/25
-                  
-                </div>
-              </div>
-              <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
-                <Checkbox onChange={() => {}}></Checkbox>
-                <p className=" text-[#505050] text-sm ">BOQ Comment(Senior)</p>
-                <FaCaretRight className="text-[#828282]" />
-              </div>
-              <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
-                <Checkbox onChange={() => {}}></Checkbox>
-                <p className=" text-[#505050] text-sm ">Client Comment</p>
-                <FaCaretRight className="text-[#828282]" />
-              </div>
-              <button className=" items-center w-[130px] justify-center mx-auto p-1 h-[40px] bg-gradient-to-r rounded-full text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
-                <span className=" text-sm font-medium">+ Add More</span>
-              </button>
-            </div>
-            <div className=" flex flex-col justify-center ">
-            <button className=" items-center w-[80px] justify-center mx-auto p-1 h-[60px] bg-gradient-to-r rounded-2xl text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
-                <span className=" text-sm font-medium">+ <br />Add More</span>
-              </button>
-            </div>
-
+          </div> */}
+        <div className="overflow-x-scroll w-full">
+          <div className="min-w-[1000px]">
             
+            <div className="min-w-full mt-5 flex flex-row min-h-[1000px] gap-5">
+              <div className="min-h-[1000px] min-w-[335px] flex flex-col p-2 gap-3 bg-white border rounded-xl border-[rgba(0, 0, 0, 0.20)]">
+                <div className="flex w-full flex-row justify-between items-center p-1 opacity-[0.7]">
+                  <h3 className=" opacity-[0.3] font-medium text-lg text-black">
+                    Name of Product
+                  </h3>
+                  <HiOutlineDotsVertical className=" cursor-pointer" />
+                </div>
+                <hr className="border border-[#000] opacity-[0.2]" />
+                <div className=" p-2 rounded-lg flex flex-col gap-2 bg-[#F7F7F7] mt-1">
+                  <div className=" flex flex-row justify-between items-center w-full ">
+                    <div className=" w-[60%] text-[#505050] rounded-lg bg-white p-2 text-center">
+                      Name here
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M5.8 14H5V15H5.8C6.1 15 6.3 14.8 6.3 14.5C6.3 14.2 6.1 14 5.8 14ZM11 2H3V18H16V7L11 2ZM7.2 14.6C7.2 15.4 6.6 16 5.8 16H5V17H4V13H5.8C6.6 13 7.2 13.6 7.2 14.4V14.6ZM11.3 15.1C11.3 16.1 10.5 17 9.4 17H8V13H9.4C10.4 13 11.3 13.8 11.3 14.9V15.1ZM15 14H13V15H14.5V16H13V17H12V13H15V14ZM15 12H4V3H11V7H15V12ZM9.4 14H9V16H9.4C10 16 10.4 15.6 10.4 15C10.4 14.4 9.9 14 9.4 14Z"
+                        fill="#1D8CFB"
+                      />
+                    </svg>
+                  </div>
+                  <div className=" flex flex-row justify-between gap-2 items-start w-full ">
+                    <div className=" w-[70%] bg-[#D3E9FF] p-2 rounded-lg">
+                      <Upload
+                        listType="picture-card"
+                        beforeUpload={beforeUpload}
+                        fileList={fileList2}
+                        onChange={handleChange2}
+                      >
+                        {fileList2.length >= 1 ? null : uploadButton}
+                      </Upload>
+                      <p className=" text-[#828282] text-xs">On Nov 16, 2023</p>
+                    </div>
+                    <div className=" w-[30%] p-1 flex-col justify-start flex gap-2  ">
+                      <div className=" w-full p-1 py-2 rounded-lg bg-[#B4FFBB] text-[#00900D] text-xs text-center">
+                        Approve
+                      </div>
+                      <div className=" w-full p-1 py-2 rounded-lg bg-[#FFABAB] text-[#AD0000] text-xs text-center">
+                        Rework
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full text-xs py-3 mt-2 bg-white h-[40px] text-[#000] flex flex-row justify-between items-center p-2 rounded-lg">
+                    Set Target Date
+                    <span className=" opacity-[0.2]">12/05/25</span>
+                  </div>
+                  <div
+                    onClick={() => setOpenModal(true)}
+                    className="w-full cursor-pointer text-xs py-3 mt-2 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                  >
+                    View Comments (23)
+                    <FaCaretRight className=" text-lg" />
+                  </div>
+                </div>
+                <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
+                  <Checkbox onChange={() => {}}></Checkbox>
+                  <p className=" text-[#505050] text-sm ">Senior Comments</p>
+                  <FaCaretRight className="text-[#828282]" />
+                </div>
+                <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
+                  <Checkbox onChange={() => {}}></Checkbox>
+                  <p className=" text-[#505050] text-sm ">Client Comments</p>
+                  <FaCaretRight className="text-[#828282]" />
+                </div>
+                <button className=" items-center w-[130px] justify-center mx-auto p-1 h-[40px] bg-gradient-to-r rounded-full text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
+                  <span className=" text-sm font-medium">+ Add More</span>
+                </button>
+              </div>
+              <div className="min-h-[1000px] min-w-[335px] flex flex-col p-2 gap-3 bg-white border rounded-xl border-[rgba(0, 0, 0, 0.20)]">
+                <div className="flex w-full flex-row justify-between items-center p-1 opacity-[0.7]">
+                  <h3 className=" font-medium text-lg text-black">
+                    Wall Panel
+                  </h3>
+                  <HiOutlineDotsVertical className=" cursor-pointer" />
+                </div>
+                <hr className="border border-[#000] opacity-[0.2]" />
+                <div className=" p-2 rounded-lg flex flex-col gap-2 bg-[#F7F7F7] mt-1">
+                  <div className=" flex flex-row justify-between items-center w-full ">
+                    <div className=" w-[60%] text-[#505050] rounded-lg bg-white p-2 text-center">
+                      Layout
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M5.8 14H5V15H5.8C6.1 15 6.3 14.8 6.3 14.5C6.3 14.2 6.1 14 5.8 14ZM11 2H3V18H16V7L11 2ZM7.2 14.6C7.2 15.4 6.6 16 5.8 16H5V17H4V13H5.8C6.6 13 7.2 13.6 7.2 14.4V14.6ZM11.3 15.1C11.3 16.1 10.5 17 9.4 17H8V13H9.4C10.4 13 11.3 13.8 11.3 14.9V15.1ZM15 14H13V15H14.5V16H13V17H12V13H15V14ZM15 12H4V3H11V7H15V12ZM9.4 14H9V16H9.4C10 16 10.4 15.6 10.4 15C10.4 14.4 9.9 14 9.4 14Z"
+                        fill="#1D8CFB"
+                      />
+                    </svg>
+                  </div>
+                  <div className=" flex flex-row justify-between gap-2 items-start w-full ">
+                    <div className=" w-[70%] bg-[#D3E9FF] p-2 rounded-lg">
+                      <Upload
+                        listType="picture-card"
+                        beforeUpload={beforeUpload}
+                        fileList={fileList2}
+                        onChange={handleChange2}
+                      >
+                        {fileList2.length >= 1 ? null : uploadButton}
+                      </Upload>
+                      <p className=" text-[#828282] text-xs">On Nov 16, 2023</p>
+                    </div>
+                    <div className=" w-[30%] p-1 flex-col justify-start flex gap-2  ">
+                      <div className=" w-full p-1 py-2 rounded-lg bg-[#B4FFBB] text-[#00900D] text-xs text-center">
+                        Approve
+                      </div>
+                      <div className=" w-full p-1 py-2 rounded-lg bg-[#FFABAB] text-[#AD0000] text-xs text-center">
+                        Rework
+                      </div>
+                    </div>
+                  </div>
 
-           
+                  <div
+                    onClick={() => setOpenModal(true)}
+                    className="w-full cursor-pointer text-xs py-3 mt-2 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                  >
+                    View Comments (23)
+                    <FaCaretRight className=" text-lg" />
+                  </div>
+                </div>
+                <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
+                  <Checkbox onChange={() => {}}></Checkbox>
+                  <p className=" text-[#505050] text-sm ">Senior Comments</p>
+                  <FaCaretRight className="text-[#828282]" />
+                </div>
+                <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
+                  <Checkbox onChange={() => {}}></Checkbox>
+                  <p className=" text-[#505050] text-sm ">Client Comments</p>
+                  <FaCaretRight className="text-[#828282]" />
+                </div>
+                <div className=" p-2 rounded-lg flex flex-col gap-2 bg-[#F7F7F7] mt-1">
+                  <div className=" flex flex-row justify-between items-center w-full ">
+                    <div className=" w-[60%] text-[#505050] rounded-lg bg-white p-2 text-center">
+                      Production BOQ
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M5.8 14H5V15H5.8C6.1 15 6.3 14.8 6.3 14.5C6.3 14.2 6.1 14 5.8 14ZM11 2H3V18H16V7L11 2ZM7.2 14.6C7.2 15.4 6.6 16 5.8 16H5V17H4V13H5.8C6.6 13 7.2 13.6 7.2 14.4V14.6ZM11.3 15.1C11.3 16.1 10.5 17 9.4 17H8V13H9.4C10.4 13 11.3 13.8 11.3 14.9V15.1ZM15 14H13V15H14.5V16H13V17H12V13H15V14ZM15 12H4V3H11V7H15V12ZM9.4 14H9V16H9.4C10 16 10.4 15.6 10.4 15C10.4 14.4 9.9 14 9.4 14Z"
+                        fill="#1D8CFB"
+                      />
+                    </svg>
+                  </div>
+                  <div className=" flex flex-row justify-between gap-2 items-start w-full ">
+                    <div className=" w-[70%] bg-[#D3E9FF] p-2 rounded-lg">
+                      <Upload
+                        listType="picture-card"
+                        beforeUpload={beforeUpload}
+                        fileList={fileList2}
+                        onChange={handleChange2}
+                      >
+                        {fileList2.length >= 1 ? null : uploadButton}
+                      </Upload>
+                      <p className=" text-[#828282] text-xs">On Nov 16, 2023</p>
+                    </div>
+                    <div className=" w-[30%] p-1 flex-col justify-start flex gap-2  ">
+                      <div className=" w-full p-1 py-2 rounded-lg bg-[#B4FFBB] text-[#00900D] text-xs text-center">
+                        Approve
+                      </div>
+                      <div className=" w-full p-1 py-2 rounded-lg bg-[#FFABAB] text-[#AD0000] text-xs text-center">
+                        Rework
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => setOpenModal(true)}
+                    className="w-full cursor-pointer text-xs py-3 mt-2 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                  >
+                    View Comments (23)
+                    <FaCaretRight className=" text-lg" />
+                  </div>
+                  <div className="w-full font-medium text-xs py-3 mt-2  h-[40px] text-[#000] flex flex-row justify-end items-center p-2 rounded-lg">
+                    Target Date : 12/05/25
+                  </div>
+                </div>
+                <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
+                  <Checkbox onChange={() => {}}></Checkbox>
+                  <p className=" text-[#505050] text-sm ">
+                    BOQ Comment(Senior)
+                  </p>
+                  <FaCaretRight className="text-[#828282]" />
+                </div>
+                <div className="flex flex-row border border-[rgba(0, 0, 0, 0.10)] bg-white  p-2 items-center justify-between rounded-lg">
+                  <Checkbox onChange={() => {}}></Checkbox>
+                  <p className=" text-[#505050] text-sm ">Client Comment</p>
+                  <FaCaretRight className="text-[#828282]" />
+                </div>
+                <button className=" items-center w-[130px] justify-center mx-auto p-1 h-[40px] bg-gradient-to-r rounded-full text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
+                  <span className=" text-sm font-medium">+ Add More</span>
+                </button>
+              </div>
+              <div className=" flex flex-col justify-center ">
+                <button className=" items-center w-[80px] justify-center mx-auto p-1 h-[60px] bg-gradient-to-r rounded-2xl text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
+                  <span className=" text-sm font-medium">
+                    + <br />
+                    Add More
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {openModal && (
         <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#79797998]  flex justify-center ">
-          <div className=" w-[680px] h-[771px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
+          <div className=" md:w-[680px] m-2 w-[500px] h-[771px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
             <div className=" flex justify-between  bg-white">
               <h1 className=" text-2xl font-medium text-[#000000] opacity-[0.6]">
                 Comments
@@ -651,684 +626,6 @@ export default function Senior() {
                 </div>
               </>
             )}
-          </div>
-        </div>
-      )}
-
-      {viewItem && (
-        <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#79797998]  flex justify-center ">
-          <div className=" w-[800px] h-[400px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
-            <div className=" flex flex-row justify-between  bg-white">
-              <h1 className=" text-3xl font-[600] text-[#000000] opacity-[0.8]">
-                Select the Item you want to view
-              </h1>
-              <div className=" mt-[-40px] mr-[-40px] h-[40px] border border-[#00000040] flex justify-center  items-center w-[40px] bg-white p-2 rounded-full">
-                <RxCross2
-                  className="text-[#053BD3]  text-2xl cursor-pointer"
-                  onClick={() => {
-                    setViewItem(false);
-                  }}
-                />
-              </div>
-            </div>
-            <div className=" flex flex-col w-full p-2 mt-2 text-start gap-2 ">
-              <span className=" text-[#053BD3] font-medium text-lg">
-                Category
-              </span>
-              <div className=" w-full flex flex-row justify-between items-center text-[#626262] rounded-lg border border-[#E7E7E7] bg-[#FCFCFC] py-2 px-4">
-                <p className="  text-lg font-normal">Wall Panel</p>
-                <FaCaretDown className=" text-lg" />
-              </div>
-            </div>
-
-            <div className=" flex flex-col w-full p-2 mt-2 text-start gap-2 ">
-              <span className=" text-[#053BD3] font-medium text-lg">
-                Sub-Category
-              </span>
-              <div className=" w-full flex flex-row justify-between items-center text-[#626262] rounded-lg border border-[#E7E7E7] bg-[#FCFCFC] py-2 px-4">
-                <p className="  text-lg font-normal">Elevation</p>
-                <FaCaretDown className=" text-lg" />
-              </div>
-            </div>
-            <div className=" flex flex-row w-full justify-between items-start">
-              <p className=" text-lg text-[#FF0000] flex flex-row items-center ml-2 gap-2">
-                <IoIosWarning className=" text-xl" /> Invalid Password!
-              </p>
-              <button className=" p-3 bg-[#306BFF] text-lg font-semibold rounded-lg text-white flex justify-center items-center w-[150px]">
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {showSummary && (
-        <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#79797998]  flex justify-center ">
-          <div className=" w-[680px] h-[1600px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
-            <div className=" flex justify-between  bg-white">
-              <h1 className="mt-5 font-bold text-2xl selectBOQHeading  opacity-[0.6]">
-                BOQ Summary
-              </h1>
-              <div className=" mt-[-35px] mr-[-35px] h-[40px] flex justify-center  items-center w-[40px] bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-2 rounded-full">
-                <RxCross2
-                  className="text-white  text-2xl cursor-pointer"
-                  onClick={() => {
-                    setShowSummary(false);
-                  }}
-                />
-              </div>
-            </div>
-            <hr className=" border border-[#000000] opacity-[0.2]" />
-
-            <div className=" text-start   p-4  flex flex-col w-full">
-              <h1 className="text-lg  mb-3 font-medium text-[#000]">
-                Wall Panel 50
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Wall Panel 80
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                SS Wall Panel
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Cladding Panel
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Ceiling Panel
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg  mb-3 font-medium text-[#000]">Doors</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                MS Conduit
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Coving
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">2D</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">3D</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Solid
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                L Angle
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">VP</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {selectBOQ && (
-        <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#f0f0f030]  flex justify-center ">
-          <div className=" w-[550px] h-[500px] flex flex-col selectBOQBox gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
-            <div className=" flex justify-between  bg-white">
-              <h1 className=" text-2xl font-medium text-[#000000] selectBOQHeading opacity-[0.6]">
-                Select fields to view BOQ Summary
-              </h1>
-              <div
-                onClick={() => setShowAdd(true)}
-                className="cursor-pointer text-lg font-medium opacity-[0.6] p-2 rounded-full"
-              >
-                +Add
-              </div>
-            </div>
-            <hr className=" border border-[#000000] opacity-[0.2]" />
-
-            <>
-              <div className=" w-full flex flex-col gap-4 relative">
-                {showAdd && (
-                  <div className="absolute top-0 w-[300px] opacity-[1] items-center right-0 h-[70px] p-4 flex flex-row justify-between border border-[#0000001A] z-10 bg-[#c1e0ff] rounded-lg">
-                    Name of Field
-                    <button className=" items-center w-[70px] justify-center p-1 h-[35px] bg-gradient-to-r rounded-lg text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]">
-                      <span className=" text-xs font-normal">Done</span>
-                    </button>
-                  </div>
-                )}
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">
-                      Wall Panel 50
-                    </h3>
-                  </div>
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">
-                      Wall Panel 80
-                    </h3>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">
-                      SS Wall Panel
-                    </h3>
-                  </div>
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">
-                      Cladding Panel
-                    </h3>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">
-                      Ceiling Panel
-                    </h3>
-                  </div>
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">Doors</h3>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">MS CONDUIT</h3>
-                  </div>
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">Coving</h3>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">2D</h3>
-                  </div>
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">3D</h3>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">Solid</h3>
-                  </div>
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">L Angle</h3>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row justify-between">
-                  <div className=" w-[50%] flex flex-row gap-2">
-                    <div className="w-[25px] h-[25px] bg-gradient-to-r rounded from-[#053BD3] to-[#03EAEA] p-[3px] flex flex-row justify-center items-center">
-                      <div className=" w-full h-full bg-white ">
-                        <label class="container">
-                          <input type="checkbox" />
-                          <svg viewBox="0 0 64 64" height="100%" width="100%">
-                            <path
-                              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                              pathLength="575.0541381835938"
-                              class="path"
-                            ></path>
-                          </svg>
-                        </label>
-                      </div>
-                    </div>
-                    <h3 className=" opacity-[0.6] font-medium">VP</h3>
-                  </div>
-                </div>
-                <div className=" w-full flex flex-row justify-end">
-                  <button
-                    onClick={() => {
-                      setSelectBOQ(false);
-                      setShowSummary(true);
-                    }}
-                    className=" items-center w-[200px] justify-center p-1 h-[50px] bg-gradient-to-r rounded-full text-white flex flex-row gap-3 from-[#053BD3] to-[#03EAEA]"
-                  >
-                    <span className=" text-sm font-medium">
-                      View BOQ Summary
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </>
           </div>
         </div>
       )}

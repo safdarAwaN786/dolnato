@@ -2,22 +2,10 @@
 
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import ModalOneChart from "../components/widgets/overview/modals/ModalOneChart.jsx";
-import ModalTwoChart from "../components/widgets/overview/modals/ModalTwoChart.jsx";
-import ModalThreeChart from "../components/widgets/overview/modals/ModalThreeChart.jsx";
-import ModalFourChart from "../components/widgets/overview/modals/ModalFourChart.jsx";
-import ModalFiveChart from "../components/widgets/overview/modals/ModalFiveChart.jsx";
-import ModalSixChart from "../components/widgets/overview/modals/ModalSixChart.jsx";
 import { AiOutlinePlus } from "react-icons/ai";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import {
-  FaCaretDown,
-  FaCaretLeft,
-  FaCaretRight,
-  FaSortDown,
-} from "react-icons/fa";
+import { FaCaretDown, FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { Checkbox, Progress, Upload } from "antd";
-import { GoArrowRight } from "react-icons/go";
 import { Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { IoIosWarning } from "react-icons/io";
@@ -42,7 +30,6 @@ const items = [
 
 export default function Designers() {
   const [openModal, setOpenModal] = useState(false);
-  const [modal, setModal] = useState(0);
   const [singleComment, setSingleComment] = useState(false);
   const [selectBOQ, setSelectBOQ] = useState(false);
   const allowedExtensions = [".jpg", ".jpeg", ".png"];
@@ -97,10 +84,10 @@ export default function Designers() {
 
   return (
     <>
-      <div className="sm:ms-[18%] sm:w-[82%] mt-14 w-full overflow-x-scroll p-10 bg-[#fff] ">
-        <div className="min-w-[1000px]">
-          <div className="w-full flex flex-row items-center border p-3 rounded-xl border-[rgba(0, 0, 0, 0.10)] justify-between">
-            <div className=" w-[40%] flex flex-row gap-4">
+      <div className="lg:ms-[18%] lg:w-[82%] mt-14 w-full  md:p-10 px-3 py-10  bg-[#fff] ">
+       
+          <div className="w-full  flex flex-row 2xl:flex-nowrap gap-3 flex-wrap items-center border p-3 rounded-xl border-[rgba(0, 0, 0, 0.10)] justify-between">
+            <div className=" xl:w-[40%] w-full flex flex-row gap-4">
               <div className="flex flex-col">
                 <h2 className=" opacity-[0.6] text-xl font-medium">May</h2>
                 <p className=" opacity-[0.5] text-sm">
@@ -109,32 +96,32 @@ export default function Designers() {
               </div>
               <vr className="border border-[#000000] opacity-[0.2]" />
             </div>
-            <div className=" w-[60%] flex flex-row gap-4 justify-end">
-              <div className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
+            <div className=" xl:w-[60%] w-full flex flex-row sm:flex-nowrap flex-wrap  gap-4 justify-start md:justify-end">
+              <div className=" md:w-[230px] w-[180px] bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
                 <button
                   onClick={() => setSelectBOQ(true)}
-                  className="w-[210px] justify-center items-center p-2  px-5 h-[38px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
+                  className="w-full justify-center items-center   md:px-5 md:h-[38px] h-[50px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
                 >
                   <span className=" text-sm">View BOQ Summary</span>
                 </button>
               </div>
-              <div className=" bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
+              <div className=" md:w-[230px] w-[180px] bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
                 <button
                   onClick={() => setViewItem(true)}
-                  className=" w-[210px] justify-center items-center p-2  px-5 h-[38px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
+                  className="w-full justify-center items-center   md:px-5 md:h-[38px] h-[50px] font-medium bg-white rounded-lg text-[#0645D5] flex flex-row gap-3 "
                 >
                   <span className=" text-sm">Generate Team Report</span>
                 </button>
               </div>
-              <div className="  justify-center bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
-                <button className=" w-[200px] items-center justify-center p-2  px-5 h-[38px] flex  font-medium rounded-lg text-white  flex-row gap-1 ">
+              <div className=" md:w-[230px] w-[180px] justify-center bg-gradient-to-r from-[#053BD3] to-[#03EAEA] p-[1px] rounded-lg">
+                <button className=" w-full items-center justify-center   md:px-5 md:h-[38px] h-[50px] flex  font-medium rounded-lg text-white  flex-row gap-1 ">
                   <AiOutlinePlus className="text-white text-lg" />
                   <span className=" text-sm">Add File</span>
                 </button>
               </div>
             </div>
           </div>
-          <div className=" flex w-full  justify-end my-2">
+          {/* <div className=" flex w-full  justify-end my-2">
             <div className="w-[400px] ">
               <Progress
                 percent={45}
@@ -146,8 +133,14 @@ export default function Designers() {
                 }}
               />
             </div>
-          </div>
-          <div className="w-full flex flex-row min-h-[1000px] gap-5">
+          </div> */}
+          <div className=" overflow-x-scroll w-full">
+          <div className="min-w-[1000px]">
+
+
+
+         
+          <div className="w-full flex mt-5 flex-row min-h-[1000px] gap-5">
             <div className="min-h-[1000px] w-[335px] flex flex-col p-2 gap-3 bg-white border rounded-xl border-[rgba(0, 0, 0, 0.20)]">
               <div className="flex w-full flex-row justify-between items-center p-1 opacity-[0.7]">
                 <h3 className=" opacity-[0.7] font-medium text-lg text-black">
@@ -197,7 +190,10 @@ export default function Designers() {
                     </div>
                   </div>
                 </div>
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
+                <div
+                  onClick={() => setOpenModal(true)}
+                  className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                >
                   View Comments (23)
                   <FaCaretRight className=" text-lg" />
                 </div>
@@ -253,7 +249,10 @@ export default function Designers() {
                     </div>
                   </div>
                 </div>
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
+                <div
+                  onClick={() => setOpenModal(true)}
+                  className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                >
                   View Comments (23)
                   <FaCaretRight className=" text-lg" />
                 </div>
@@ -305,7 +304,10 @@ export default function Designers() {
                     </div>
                   </div>
                 </div>
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
+                <div
+                  onClick={() => setOpenModal(true)}
+                  className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                >
                   View Comments (23)
                   <FaCaretRight className=" text-lg" />
                 </div>
@@ -357,7 +359,10 @@ export default function Designers() {
                     </div>
                   </div>
                 </div>
-                <div onClick={()=> setOpenModal(true)} className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg">
+                <div
+                  onClick={() => setOpenModal(true)}
+                  className="w-full cursor-pointer text-xs py-3 mt-5 bg-white h-[40px] text-[#828282] flex flex-row justify-between items-center p-2 rounded-lg"
+                >
                   View Comments (23)
                   <FaCaretRight className=" text-lg" />
                 </div>
@@ -424,12 +429,14 @@ export default function Designers() {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+          </div>
+      
       </div>
 
       {openModal && (
         <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#79797998]  flex justify-center ">
-          <div className=" w-[680px] h-[771px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
+          <div className=" md:w-[680px] m-2 w-[500px] h-[771px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
             <div className=" flex justify-between  bg-white">
               <h1 className=" text-2xl font-medium text-[#000000] opacity-[0.6]">
                 Comments
@@ -697,7 +704,7 @@ export default function Designers() {
 
       {viewItem && (
         <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#79797998]  flex justify-center ">
-          <div className=" w-[800px] h-[400px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
+          <div className=" md:w-[800px] w-[500px] m-2 h-[400px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
             <div className=" flex flex-row justify-between  bg-white">
               <h1 className=" text-3xl font-[600] text-[#000000] opacity-[0.8]">
                 Select the Item you want to view
@@ -706,7 +713,7 @@ export default function Designers() {
                 <RxCross2
                   className="text-[#053BD3]  text-2xl cursor-pointer"
                   onClick={() => {
-                   setViewItem(false)
+                    setViewItem(false);
                   }}
                 />
               </div>
@@ -715,16 +722,16 @@ export default function Designers() {
               <span className=" text-[#053BD3] font-medium text-lg">
                 Category
               </span>
-              <Dropdown  menu={{
+              <Dropdown
+                menu={{
                   items,
                 }}
-                trigger={["click"]}>
-
-             
-              <div className=" cursor-pointer w-full flex flex-row justify-between items-center text-[#626262] rounded-lg border border-[#E7E7E7] bg-[#FCFCFC] py-2 px-4">
-                <p className="  text-lg font-normal">Wall Panel</p>
-                <FaCaretDown className=" text-lg" />
-              </div>
+                trigger={["click"]}
+              >
+                <div className=" cursor-pointer w-full flex flex-row justify-between items-center text-[#626262] rounded-lg border border-[#E7E7E7] bg-[#FCFCFC] py-2 px-4">
+                  <p className="  text-lg font-normal">Wall Panel</p>
+                  <FaCaretDown className=" text-lg" />
+                </div>
               </Dropdown>
             </div>
 
@@ -732,22 +739,25 @@ export default function Designers() {
               <span className=" text-[#053BD3] font-medium text-lg">
                 Sub-Category
               </span>
-              <Dropdown  menu={{
+              <Dropdown
+                menu={{
                   items,
                 }}
-                trigger={["click"]}>
-              <div className=" w-full cursor-pointer flex flex-row justify-between items-center text-[#626262] rounded-lg border border-[#E7E7E7] bg-[#FCFCFC] py-2 px-4">
-                <p className="  text-lg font-normal">Elevation</p>
-                <FaCaretDown className=" text-lg" />
-              </div>
+                trigger={["click"]}
+              >
+                <div className=" w-full cursor-pointer flex flex-row justify-between items-center text-[#626262] rounded-lg border border-[#E7E7E7] bg-[#FCFCFC] py-2 px-4">
+                  <p className="  text-lg font-normal">Elevation</p>
+                  <FaCaretDown className=" text-lg" />
+                </div>
               </Dropdown>
             </div>
             <div className=" flex flex-row w-full justify-between items-start">
-                <p className=" text-lg text-[#FF0000] flex flex-row items-center ml-2 gap-2"><IoIosWarning  className=" text-xl"/> Invalid Password!</p>
-                <button className=" p-3 bg-[#306BFF] text-lg font-semibold rounded-lg text-white flex justify-center items-center w-[150px]">
-                  Submit
-                </button>
-
+              <p className=" text-lg text-[#FF0000] flex flex-row items-center ml-2 gap-2">
+                <IoIosWarning className=" text-xl" /> Invalid Password!
+              </p>
+              <button className=" p-3 bg-[#306BFF] text-lg font-semibold rounded-lg text-white flex justify-center items-center w-[150px]">
+                Submit
+              </button>
             </div>
           </div>
         </div>
@@ -755,7 +765,7 @@ export default function Designers() {
 
       {showSummary && (
         <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#79797998]  flex justify-center ">
-          <div className=" w-[680px] h-[1600px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
+          <div className=" md:w-[680px] w-[500px] m-2 h-[1600px] flex flex-col gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
             <div className=" flex justify-between  bg-white">
               <h1 className="mt-5 font-bold text-2xl selectBOQHeading  opacity-[0.6]">
                 BOQ Summary
@@ -771,322 +781,330 @@ export default function Designers() {
             </div>
             <hr className=" border border-[#000000] opacity-[0.2]" />
 
-            <div className=" text-start   p-4  flex flex-col w-full">
-              <h1 className="text-lg  mb-3 font-medium text-[#000]">
-                Wall Panel 50
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
+            <div className=" text-start  overflow-x-scroll p-4  flex flex-col w-full">
+              <div className=" min-w-[700px]">
+                <h1 className="text-lg  mb-3 font-medium text-[#000]">
+                  Wall Panel 50
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  Wall Panel 80
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  SS Wall Panel
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Wall Panel 80
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  Cladding Panel
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  Ceiling Panel
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
+                <h1 className="text-lg  mb-3 font-medium text-[#000]">Doors</h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                SS Wall Panel
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  MS Conduit
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  Coving
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  2D
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Cladding Panel
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  3D
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  Solid
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  L Angle
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Ceiling Panel
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg  mb-3 font-medium text-[#000]">Doors</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                MS Conduit
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Coving
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">2D</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">3D</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                Solid
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
-                L Angle
-              </h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
-                </div>
-              </div>
-              <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">VP</h1>
-              <div className="w-full flex flex-row gap-3 items-center justify-start">
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
-                    Amentment QTY
-                  </p>
-                  580
-                </div>
-                <p>-</p>
-                <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
-                    Actual QTY
-                  </p>
-                  580
-                </div>
-                <p>=</p>
-                <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
-                  <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
-                    Difference
-                  </p>
-                  580
+                <h1 className="text-lg mt-5 mb-3 font-medium text-[#000]">
+                  VP
+                </h1>
+                <div className="w-full flex flex-row gap-3 items-center justify-start">
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[120px] text-xs">
+                      Amentment QTY
+                    </p>
+                    580
+                  </div>
+                  <p>-</p>
+                  <div className=" w-[30%] h-[50px] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-normal w-[100px] text-xs">
+                      Actual QTY
+                    </p>
+                    580
+                  </div>
+                  <p>=</p>
+                  <div className=" w-[30%] h-[50px] bg-[#fafafa] rounded-lg border-dashed p-4 border border-[#B5BBC2]">
+                    <p className="bg-white p-1 mt-[-28px] text-[#707C8B] font-[700] w-[90px] text-xs">
+                      Difference
+                    </p>
+                    580
+                  </div>
                 </div>
               </div>
             </div>
@@ -1096,7 +1114,7 @@ export default function Designers() {
 
       {selectBOQ && (
         <div className="w-full h-[100vh] overflow-y-scroll z-10  fixed top-0 start-0 bg-[#f0f0f030]  flex justify-center ">
-          <div className=" w-[550px] h-[500px] flex flex-col selectBOQBox gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
+          <div className=" md:w-[550px] w-[450px] m-2 h-[500px] flex flex-col selectBOQBox gap-3 my-32 rounded-lg p-6 bg-white opacity-[100] text-center ">
             <div className=" flex justify-between  bg-white">
               <h1 className=" text-2xl font-medium text-[#000000] selectBOQHeading opacity-[0.6]">
                 Select fields to view BOQ Summary
